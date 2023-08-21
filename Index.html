@@ -38,6 +38,16 @@
             background-color: #f2f2f2;
             position: sticky;
             top: 0;
+            z-index: 2; /* Ensure that headers are above cells */
+        }
+        th:first-child {
+            left: 0;
+            z-index: 3; /* Keep the first header in front of others */
+        }
+        td:first-child {
+            position: sticky;
+            left: 0;
+            background-color: #f2f2f2; /* Match header background */
             z-index: 1;
         }
         .increasing {
