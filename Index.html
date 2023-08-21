@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Report</title>
+      <style>
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+           .increasing {
+            background-color: #b2ffb2; /* Light green */
+        }
+
+        .decreasing {
+            background-color: #ffb2b2; /* Light red */
+        }
+    </style>
+</head>
+<body>
+    <h1>Sales Report</h1>
+    <table id="salesTable">
+    </table>
+
+   <script>
+        async function fetchCSVData() {
+            const response = await fetch('sales.csv'); // Replace with your CSV file path
+            const data = await response.text();
+            return data;
+        }
+
+        async function parseCSVData() {
+            const csvData = await fetchCSVData();
+            const lines = csvData.trim().split('\n');
+            const headers = lines[0].split(',');
+            const rows = lines.slice(1).map(line => line.split(','));
+
+            const table = document.getElementById('salesTable');
+            const headerRow = table.insertRow();
+            headers.forEach(header => {
+                const th = document.createElement('th');
+                th.textContent = header;
+                headerRow.appendChild(th);
+            });
+
+            rows.forEach(rowData => {
+                const row = table.insertRow();
+                rowData.forEach(cellData => {
+                    const cell = row.insertCell();
+                    cell.textContent = cellData;
+                });
+            });
+        }
+
+        parseCSVData();
+
+        
+    </script>
+</body>
+</html>
