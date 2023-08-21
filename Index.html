@@ -3,10 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <header>
-      <h1 class="store-name">Darpan Vegetables</h1>
-      <link rel="stylesheet" href="styles.css">
-    </header>
     <title>Sales Report</title>
     <style>
         body {
@@ -26,39 +22,29 @@
         }
         table {
             border-collapse: collapse;
-            width: 80%;
+            width: 100%; /* Occupy full width on all devices */
             margin-top: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             background-color: white;
+            overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
         }
         th, td {
             border: 1px solid #ddd;
             padding: 10px;
             text-align: center;
+            white-space: nowrap; /* Prevent text wrapping in cells */
         }
         th {
             background-color: #f2f2f2;
+            position: sticky;
+            top: 0;
+            z-index: 1;
         }
         .increasing {
             background-color: #b2ffb2; /* Light green */
         }
         .decreasing {
             background-color: #ffb2b2; /* Light red */
-        }
-        
-        /* Sticky headers */
-        .sticky-header thead {
-            position: sticky;
-            top: 0;
-            background-color: #f2f2f2;
-            z-index: 1;
-        }
-        .sticky-header th {
-            position: -webkit-sticky; /* Safari */
-            position: sticky;
-            top: 0;
-            background-color: #f2f2f2;
-            z-index: 1;
         }
     </style>
 </head>
